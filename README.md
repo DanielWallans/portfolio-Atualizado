@@ -15,17 +15,6 @@ Este é o meu portfólio pessoal, onde apresento minhas habilidades, projetos e 
 - CSS
 - JavaScript
 
-## Como Executar o Projeto
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/DanielWallans/portfolio.git
-   ```
-2. Navegue até o diretório do projeto:
-   ```bash
-   cd portfolio
-   ```
-3. Abra o arquivo `index.html` no seu navegador preferido.
-
 ## Link do Projeto
 Você pode acessar o projeto online através do link: [Portfolio - Daniel Wallans](https://danielwallans.netlify.app/)
 
