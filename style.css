@@ -1,34 +1,48 @@
-/*Importação de Fontes*/
+/* ========================================
+   🎨 IMPORTAÇÃO DE FONTES GOOGLE
+   ======================================== */
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-/*Estilos Globais*/
+/* ========================================
+   🌍 ESTILOS GLOBAIS BASE
+   ======================================== */
 * {
+  /* Garante que padding e border sejam incluídos no tamanho total */
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #202022;
-  font-family: 'Inter', sans-serif;
+  background: #202022; /* Fundo escuro principal */
+  font-family: 'Inter', sans-serif; /* Fonte principal para legibilidade */
   font-weight: 700;
   font-style: normal;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Navegação suave entre seções */
 }
 
-/*Cabeçalho*/
+/* ========================================
+   📱 CABEÇALHO PRINCIPAL (HEADER)
+   ======================================== */
 .header {
+  /* Posicionamento fixo no topo da página */
   position: fixed;
   width: 100%;
   height: 90px;
   top: 0;
   left: 0;
+  
+  /* Visual moderno com gradiente e blur */
   background: linear-gradient(135deg, rgba(44, 44, 47, 0.98) 0%, rgba(77, 23, 23, 0.15) 100%);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); /* Efeito de desfoque do fundo */
   border-bottom: 2px solid rgba(77, 23, 23, 0.3);
-  z-index: 100;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Layering e animações */
+  z-index: 100; /* Sempre por cima de outros elementos */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transição suave */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  
+  /* Layout flexível para organizar logo e navegação */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,53 +65,112 @@ body {
   100% { opacity: 1; }
 }
 
+/* ========================================
+   🎯 LOGO DO PORTFÓLIO (DANIEL WALLANS)
+   ======================================== */
 .logo-container {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 10px; /* Espaço entre "Daniel", linha e "Wallans" */
 }
 
 .header-title {
+  /* Fonte estilizada para o nome */
   font-family: 'Teko', sans-serif;
   font-size: 64px;
   font-weight: 700;
+  
+  /* Efeitos interativos suaves */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 2;
 }
 
+/* Efeito hover no nome - cresce e sobe ligeiramente */
 .header-title:hover {
   transform: scale(1.08) translateY(-2px);
   filter: drop-shadow(0 8px 16px rgba(77, 23, 23, 0.4));
 }
 
+/* Estilo para "Wallans" - cor vermelha característica */
 .wallans {
-  color: #4D1717;
+  color: #4D1717; /* Vermelho elegante */
   text-shadow: 0 0 20px rgba(77, 23, 23, 0.5);
 }
 
+/* Estilo para "Daniel" - cor branca clean */
 .daniel {
-  color: #ffffff;
+  color: #ffffff; /* Branco puro */
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-/* Linha divisória animada entre Daniel e Wallans */
+/* ========================================
+   ⚡ LINHA DECORATIVA ANIMADA DO LOGO
+   ======================================== */
 .logo-line {
+  /* Dimensões da linha vertical */
   width: 3px;
   height: 50px;
+  
+  /* Gradiente que conecta as cores do nome */
   background: linear-gradient(180deg, #4D1717, #ffffff);
   border-radius: 2px;
   margin: 0 15px;
+  
+  /* Efeitos visuais */
   box-shadow: 0 0 10px rgba(77, 23, 23, 0.5);
   animation: logoLinePulse 2s ease-in-out infinite alternate;
 }
 
-/* Animação de pulsação da linha do logo */
+/* Animação sutil de pulsação da linha - respiração visual */
 @keyframes logoLinePulse {
-  0% { transform: scaleY(0.8); opacity: 0.7; }
-  100% { transform: scaleY(1.2); opacity: 1; }
+  0% { 
+    transform: scaleY(0.8); 
+    opacity: 0.7; 
+  }
+  100% { 
+    transform: scaleY(1.2); 
+    opacity: 1; 
+  }
 }
+
+/* Menu hamburger - oculto por padrão */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Estilos do modal removidos */
 
 /* ===================================
    MENU DE NAVEGAÇÃO PRINCIPAL
@@ -374,13 +447,114 @@ body {
   }
 }
 
-/* Responsividade */
+/* Responsividade para tablets e laptops pequenos */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 30px;
+  }
+  
+  .header-title {
+    font-size: 48px;
+  }
+  
+  .logo-line {
+    height: 40px;
+    margin: 0 10px;
+  }
+  
+  #home {
+    padding: 100px 40px 60px;
+  }
+  
+  .home-container {
+    gap: 40px;
+  }
+  
+  .profile-image {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .content-section h1 {
+    font-size: 72px;
+  }
+  
+  .intro h2 {
+    font-size: 32px;
+  }
+  
+  .letter {
+    font-size: 32px;
+  }
+  
+  #sobre, #projetos, #contato {
+    padding: 60px 40px;
+  }
+}
+
+/* ========================================
+   📱 RESPONSIVIDADE - DISPOSITIVOS MÓVEIS
+   Ajustes para telas de 768px e menores (tablets/smartphones)
+   ======================================== */
 @media (max-width: 768px) {
+  .header {
+    height: 65px;
+    padding: 0 20px;
+  }
+  
+  .header-title {
+    font-size: 28px;
+  }
+  
+  .logo-line {
+    height: 22px;
+    margin: 0 6px;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .nav-text {
+    font-size: 14px;
+  }
+  
+  /* Ocultar link 'Sobre' em tablets */
+  .nav-links a[href="#sobre"] {
+    display: none;
+  }
+  
+  /* Ajustar texto da seção projetos */
+  #projetos .section-intro {
+    font-size: 32px !important;
+    padding: 0 20px;
+    white-space: normal !important;
+    overflow: visible !important;
+    border: none !important;
+    animation: none !important;
+  }
+  
+  #home {
+    min-height: 70vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+  }
+  
   .home-container {
     flex-direction: column;
-    gap: 40px;
+    gap: 8px;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .profile-section {
+    margin-bottom: 0;
   }
   
   .content-section {
@@ -388,15 +562,38 @@ body {
     text-align: center;
     margin-left: 0;
     padding-left: 0;
+    width: 100%;
+    max-width: 500px;
   }
   
   .profile-image {
-    width: 400px;
-    height: 400px;
+    width: 280px;
+    height: 280px;
   }
   
   .content-section h1 {
-    font-size: 60px;
+    font-size: 48px;
+    margin: 0;
+    line-height: 1.1;
+  }
+  
+  .animated-text {
+    margin: 5px 0;
+  }
+  
+  .subtitle {
+    margin: 5px 0 10px 0;
+    font-size: 18px;
+  }
+  
+  .intro h2::after {
+    width: 80%;
+    max-width: 300px;
+    height: 2px;
+  }
+  
+  .letter {
+    font-size: 24px;
   }
   
   #home {
@@ -416,10 +613,13 @@ body {
   content: "";
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 750px;
-  height: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  height: 3px;
   background-color: #4D1717;
+  border-radius: 2px;
 }
 .animated-text {
   margin-top: -20px;
@@ -444,10 +644,12 @@ body {
   width: 20px;
 }
 
-/*Social Icons(icones de contato)*/ 
+/* ========================================
+   🔗 ÍCONES SOCIAIS (LinkedIn, GitHub, Email)
+   ======================================== */
 .social-icons {
-  margin-top: 50px;
-  display: flex;
+  margin-top: 50px; /* Espaço do conteúdo acima */
+  display: flex; /* Layout horizontal dos ícones */
   justify-content: center;
   align-items: center;
   gap: 30px;
@@ -665,9 +867,11 @@ body {
 #projetos .section-intro {
   font-family: 'Inter', sans-serif;
   font-size: 64px;
-  font-weight: 700px;
+  font-weight: 700;
   color: #ffffff;
   margin-top: -20px;
+  text-align: center;
+  padding: 0 20px;
 }
 
 /* ===================================
@@ -954,7 +1158,11 @@ body {
   border-radius: 12px;
   overflow: hidden;
   height: 300px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: #2C2C2F;
 }
 
 .simple-carousel-image {
@@ -963,9 +1171,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
   opacity: 0;
   transition: opacity 0.4s ease;
+  border-radius: 12px;
+  background: #2C2C2F;
 }
 
 .simple-carousel-image.active {
@@ -1346,13 +1557,18 @@ body {
   padding-left: 10px;
 }
 
-/*Seção Rodape*/
+/* ========================================
+   🦶 RODAPÉ SIMPLIFICADO (FOOTER)
+   ======================================== */
 footer {
+  /* Visual elegante com gradiente escuro */
   background: linear-gradient(135deg, #1a1a1c 0%, #2C2C2F 50%, #1a1a1c 100%);
   color: white;
-  padding: 60px 0 20px 0;
+  
+  /* Layout compacto e centralizado */
+  padding: 40px 20px;
   position: relative;
-  overflow: hidden;
+  text-align: center;
 }
 
 footer::before {
@@ -1361,170 +1577,30 @@ footer::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #DC143C, transparent);
-  animation: footerGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes footerGlow {
-  0% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
-  padding: 0 20px;
-}
-
-.footer-section h3 {
-  font-family: 'Teko', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: #DC143C;
-  margin-bottom: 15px;
-  position: relative;
-}
-
-.footer-section h3::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background: linear-gradient(90deg, #DC143C, transparent);
-}
-
-.footer-section h4 {
-  font-family: 'Teko', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: #f0f0f0;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-section p {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  color: #cccccc;
-  margin: 8px 0;
-  line-height: 1.5;
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.footer-links a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #cccccc;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  padding: 8px 0;
-}
-
-.footer-links a:hover {
-  color: #DC143C;
-  transform: translateX(10px);
-}
-
-.footer-links img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) saturate(100%) invert(80%);
-  transition: all 0.3s ease;
-}
-
-.footer-links a:hover img {
-  filter: brightness(0) saturate(100%) invert(18%) sepia(95%) saturate(7471%) hue-rotate(356deg) brightness(91%) contrast(91%);
-  transform: scale(1.1);
-}
-
-.footer-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer-nav a {
-  color: #cccccc;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  padding: 5px 0;
-  position: relative;
-}
-
-.footer-nav a::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
   height: 2px;
-  background: #DC143C;
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, transparent, #4D1717, transparent);
 }
 
-.footer-nav a:hover {
-  color: #DC143C;
-  padding-left: 15px;
-}
-
-.footer-nav a:hover::before {
-  width: 30px;
-}
-
-.footer-tech {
+.footer-bottom {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 10px;
 }
 
-.footer-tech span {
-  color: #cccccc;
-  font-family: 'Inter', sans-serif;
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+  color: #ffffff;
   font-weight: 400;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  padding: 5px 0;
-  position: relative;
-  cursor: default;
 }
 
-.footer-tech span:hover {
-  color: #DC143C;
-  transform: translateX(5px);
+.footer-bottom p:first-child {
+  font-weight: 600;
+  color: #4D1717;
 }
 
-.footer-tech span::before {
-  content: '▸';
-  position: absolute;
-  left: -15px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  color: #DC143C;
-}
-
-.footer-tech span:hover::before {
-  opacity: 1;
-}
+/* Estilos antigos do footer removidos - agora é simplificado */
 
 .footer-bottom {
   margin-top: 30px;
@@ -1545,24 +1621,26 @@ footer::before {
   color: #DC143C;
   font-weight: 400;
 }
-}
 
-/* Media query para telas menores e telas mobile*/
-@media (max-width: 430px) {
+/* ========================================
+   📱 RESPONSIVIDADE - SMARTPHONES MÉDIOS
+   Ajustes para telas de 480px e menores
+   ======================================== */
+@media (max-width: 480px) {
   .header {
-    height: 70px;
-    padding: 0 20px;
+    height: 55px;
+    padding: 0 15px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
   .logo-container {
-    gap: 5px;
+    gap: 2px;
   }
 
   .header-title {
-    font-size: 36px;
+    font-size: 20px;
   }
 
   .wallans-underline {
@@ -1571,20 +1649,51 @@ footer::before {
   }
 
   .logo-line {
-    height: 30px;
-    margin: 0 8px;
+    height: 20px;
+    margin: 0 5px;
   }
 
   .nav-links {
-    gap: 15px;
+    gap: 10px;
   }
 
   .nav-link {
-    padding: 8px 12px;
+    padding: 6px 8px;
   }
 
   .nav-text {
-    font-size: 16px;
+    font-size: 12px;
+  }
+  
+  /* Ocultar link 'Sobre' em mobile médio */
+  .nav-links a[href="#sobre"] {
+    display: none;
+  }
+  
+  #home {
+    min-height: 65vh;
+    padding-top: 70px;
+  }
+  
+  .home-container {
+    padding: 10px;
+    gap: 4px;
+    align-items: center;
+    max-width: 400px;
+  }
+  
+  .profile-section {
+    margin-bottom: -5px;
+  }
+  
+  .content-section {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
   }
   
   #home {
@@ -1598,80 +1707,118 @@ footer::before {
     margin: 0;
   }
 
-  .intro h1 {
-    font-size: 48px;
+  .content-section h1 {
+    font-size: 36px;
+    margin: 0;
+    line-height: 1.0;
   }
 
-  .intro h2 {
-    font-size: 24px;
+  .animated-text {
+    margin: 3px 0;
+  }
+  
+  .subtitle {
+    margin: 3px 0 8px 0;
+    font-size: 16px;
   }
 
   .intro h2::after {
-    width: 100%;
+    width: 70%;
+    max-width: 250px;
+    height: 2px;
   }
 
   .letter {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .social-icons {
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
   }
 
   .social-icons a {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
   }
 
   .social-icons img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+  }
+
+  #sobre {
+    padding: 40px 15px;
   }
 
   #sobre h1 {
-    font-size: 24px;
+    font-size: 28px;
+    margin-bottom: 15px;
   }
 
   #sobre h2 {
-    font-size: 18px;
+    font-size: 20px;
+    margin-bottom: 10px;
   }
 
   #sobre p {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 10px;
   }
 
   .skills-container {
     display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
     justify-content: center; 
-    padding: 10px; 
+    padding: 20px 10px; 
+    max-width: 300px;
+    margin: 0 auto;
   }
+  
   .skill {
-    width: 100px; 
-    height: 100px; 
+    width: 80px; 
+    height: 80px;
+    padding: 8px;
   }
 
   .skill img {
-    width: 40px; 
-    height: 40px;
-    margin-bottom: 5px; 
+    width: 32px; 
+    height: 32px;
+    margin-bottom: 3px; 
+  }
+  
+  .skill p {
+    font-size: 10px;
+    margin: 0;
+  }
+
+  /* Seções principais com padding ajustado */
+  #projetos, #contato {
+    padding: 40px 15px;
   }
 
   /* Introdução das seções menor */
   .section-intro {
-    font-size: 20px !important; 
+    font-size: 16px !important; 
     line-height: 1.3; 
-    text-align: center; 
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    white-space: normal !important;
+    overflow: visible !important;
+    border: none !important;
+    animation: none !important;
   }
 
   /* Projetos em layout vertical */
   .projeto {
     background-color: #2C2C2F;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 15px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
     width: 100%;
     max-width: 100%; 
@@ -1679,11 +1826,13 @@ footer::before {
     justify-content: center; 
     align-items: center; 
     flex-direction: column; 
-    text-align: center; 
+    text-align: center;
+    margin-bottom: 20px;
   }
 
   .projeto h3 {
-    font-size: 24px;
+    font-size: 20px;
+    margin: 10px 0;
   }
 
   /* Conteúdo do projeto em coluna */
@@ -1698,49 +1847,57 @@ footer::before {
   /* Texto do projeto menor */
   .projeto p {
     order: 2; 
-    font-size: 14px; 
+    font-size: 12px; 
     line-height: 1.4; 
-    margin: 0; 
+    margin: 8px 0; 
+    padding: 0 5px;
   }
 
   /* Imagens responsivas */
   .projeto img {
     width: 100%;
-    max-width: 500px; 
-    height: auto; 
+    max-width: 300px; 
+    height: 200px;
     object-fit: cover;
-    border-radius: 25px;
-    transition: transform 0.5s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 15px #4D1717, 0 0 50px #4D1717;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(77, 23, 23, 0.3);
+    display: block;
+    margin: 0 auto;
   }
 
   /* Contato responsivo */
-  #contato h2 {
-    font-size: 32px;
+  #contato {
+    padding: 40px 20px;
   }
-
-  .projeto h3 {
-    font-family: 'Teko', sans-serif;
-    color: rgb(255, 255, 255);
-    font-size: 32px;
-    margin: 15px 0;
-    text-align: center;
+  
+  #contato h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #contato h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
   }
 
   /* Itens de contato em coluna */
   .contact-item {
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
+    padding: 12px;
+    margin: 8px 3px;
   }
 
   .contact-item img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
   }
 
   .contact-item p {
-    font-size: 14px;
+    font-size: 11px;
     text-align: center;
+    margin: 0;
   }
 
   /* Footer responsivo */
@@ -1823,10 +1980,19 @@ footer::before {
   .carousel-track {
     height: 250px;
   }
+  
+  /* Ocultar imagens do café e barbearia em tablets */
+  .simple-carousel-container {
+    display: none;
+  }
+  
+  .simple-dots {
+    display: none;
+  }
 
   /* Projeto simples responsivo */
   .simple-project {
-    padding: 40px 20px;
+    padding: 50px 30px;
   }
 
   .simple-project-container {
@@ -1837,14 +2003,29 @@ footer::before {
 
   .simple-project-info h3 {
     font-size: 24px;
+    margin-bottom: 15px;
   }
 
   .simple-project-info p {
     font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  /* Ajustar layout sem imagens */
+  .simple-project {
+    padding: 30px 20px;
   }
 
   .simple-carousel-container {
-    height: 200px;
+    display: none;
+  }
+  
+  .simple-carousel-image {
+    display: none;
+  }
+  
+  .simple-dots {
+    display: none;
   }
 
   .simple-tech {
@@ -1855,5 +2036,187 @@ footer::before {
     margin-top: 15px;
     padding: 12px 24px;
     font-size: 13px;
+  }
+}
+
+/* ========================================
+   📱 RESPONSIVIDADE - SMARTPHONES PEQUENOS
+   Ajustes para telas muito pequenas (360px e menores)
+   Layout ultra-compacto com menu hamburger
+   ======================================== */
+@media (max-width: 360px) {
+  .header {
+    height: 50px;
+    padding: 0 10px;
+  }
+
+  .logo-container {
+    gap: 1px;
+  }
+
+  .header-title {
+    font-size: 16px;
+  }
+
+  .logo-line {
+    height: 12px;
+    margin: 0 2px;
+  }
+
+  /* Mostrar menu hamburger em telas muito pequenas */
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  /* Estilos do modal removidos */
+
+  /* Esconder links de navegação em telas muito pequenas */
+  .nav-links {
+    position: fixed;
+    top: 55px;
+    right: -100%;
+    width: 200px;
+    height: calc(100vh - 55px);
+    background: linear-gradient(135deg, rgba(44, 44, 47, 0.98) 0%, rgba(77, 23, 23, 0.15) 100%);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-link {
+    padding: 15px 20px;
+    width: 80%;
+    text-align: center;
+  }
+
+  .nav-text {
+    font-size: 16px;
+  }
+  
+  /* Ocultar link 'Sobre' em telas muito pequenas */
+  .nav-links a[href="#sobre"] {
+    display: none;
+  }
+
+  /* Ajustes para conteúdo em telas muito pequenas */
+  #home {
+    min-height: 60vh;
+    padding-top: 65px;
+  }
+  
+  .home-container {
+    padding: 8px;
+    gap: 1px;
+    align-items: center;
+    max-width: 320px;
+  }
+  
+  .profile-section {
+    margin-bottom: -10px;
+  }
+  
+  .content-section {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .profile-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .content-section h1 {
+    font-size: 28px;
+    margin: 0;
+    line-height: 0.9;
+  }
+
+  .animated-text {
+    margin: 2px 0;
+  }
+  
+  .subtitle {
+    margin: 2px 0 5px 0;
+    font-size: 14px;
+  }
+
+  .letter {
+    font-size: 14px;
+  }
+  
+  .intro h2::after {
+    width: 60%;
+    max-width: 200px;
+    height: 1px;
+  }
+  
+  .social-icons {
+    margin-top: 8px;
+    gap: 6px;
+  }
+
+  #sobre, #projetos {
+    padding: 30px 10px;
+  }
+  
+  #contato {
+    padding: 25px 10px;
+  }
+  
+  #contato h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  #contato h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .contact-item {
+    padding: 8px;
+    margin: 5px 2px;
+    gap: 4px;
+  }
+  
+  .contact-item img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .contact-item p {
+    font-size: 10px;
+  }
+
+  .projeto {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .projeto img {
+    max-width: 320px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Projetos simples com mais espaço */
+  .simple-project {
+    padding: 30px 15px;
+  }
+  
+  /* Ajustar texto da seção projetos para telas muito pequenas */
+  #projetos .section-intro {
+    font-size: 20px !important;
+    padding: 0 10px;
+    line-height: 1.2;
   }
 }

@@ -21,6 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // Impede que o link funcione da forma tradicional (com "pulo")
       event.preventDefault();
       
+      // Fecha o menu mobile se estiver aberto
+      const mobileMenu = document.querySelector('.nav-links');
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      if (mobileMenu && menuBtn) {
+        mobileMenu.classList.remove('active');
+        menuBtn.classList.remove('active');
+      }
+      
       // Descobre qual seção o usuário quer ver (remove o # do href)
       const sectionId = link.getAttribute('href').substring(1);
       const targetSection = document.getElementById(sectionId);
@@ -34,6 +42,34 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // ========================================
+  // MENU HAMBURGER PARA MOBILE
+  // ========================================
+  
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', function() {
+      // Alterna as classes ativas do menu e botão
+      mobileMenuBtn.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', function(event) {
+      const isClickInsideNav = navLinks.contains(event.target);
+      const isClickOnMenuBtn = mobileMenuBtn.contains(event.target);
+      
+      if (!isClickInsideNav && !isClickOnMenuBtn && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+      }
+    });
+  }
+
+  // Modal removido conforme solicitado
 });
 
 // ========================================
