@@ -726,15 +726,35 @@ body {
   line-height: 1.6; /* Espaçamento confortável para leitura */
 }
 
+.personal-description {
+  margin: 20px 0;
+}
+
+.personal-description p {
+  font-family: 'inter', sans-serif;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.red-text {
+  color: #DC143C; /* Vermelho para destaque */
+  font-weight: 600;
+  
+}
 /* ===================================
    SEÇÃO HABILIDADES - MINHAS SKILLS
    =================================== */
 /* Container principal das habilidades */
 #skills {
-  padding: 50px 20px;
+  padding: 100px 20px 80px 20px;
   background-color: #202022;
   text-align: center;
   color: black;
+  margin-top: 88px;
 }
 
 /* Título da seção habilidades */
@@ -743,7 +763,7 @@ body {
   font-size: 40px;
   color: #4D1717;
   margin-bottom: 30px;
-  margin-top: -100px;
+  margin-top: -0px;
   text-transform: uppercase;
   animation: fadeIn 2s ease-in-out;
 }
